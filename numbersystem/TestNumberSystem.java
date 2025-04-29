@@ -25,31 +25,29 @@ public class TestNumberSystem {
           <TenSinhVien_MaSinhVien_NumberSystemConverter>.zip (Ví dụ, NguyenVanA_123456_NumberSystemConverter.zip),
           nộp lên classroom.
          */
-        Random random = new Random();
+        Random rand = new Random();
         int[] numbers = new int[3];
-        StringBuilder output = new StringBuilder();
+        StringBuilder resultOutput = new StringBuilder();
 
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = random.nextInt(1000); // Random numbers from 0-999
+        for (int i = 0; i < 3; i++) {
+            numbers[i] = rand.nextInt(1000); // Sinh số từ 0 đến 999
         }
 
-        for (int number : numbers) {
-            MyNumber myNumber = new MyNumber(number);
+        for (int n : numbers) {
+            MyNumber myNumber = new MyNumber(n);
+
             BinaryConverter binaryConverter = new BinaryConverter(myNumber);
             OctalConverter octalConverter = new OctalConverter(myNumber);
 
             myNumber.addConverter(binaryConverter);
             myNumber.addConverter(octalConverter);
 
-            output.append("Original number: ").append(number).append("\n");
-
-            output.append("Binary: ");
+            System.out.println("Original number: " + n);
+            System.out.print("Binary: ");
             binaryConverter.display();
 
-            output.append("Octal: ");
+            System.out.print("Octal: ");
             octalConverter.display();
-
-            output.append("\n");
         }
     }
 }
